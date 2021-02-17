@@ -1,0 +1,9 @@
+{
+    "name": "sitepack-io/reviewpack-reviews-feedback",
+    "description": "Collect reviews about your company with the ReviewPack platform. We sent automated emails to your customers with an invite.",
+    "type": "library",
+    "require": {},
+    "autoload": {
+        "psr-4": {"ReviewPack\\": "src/"}
+    }
+}

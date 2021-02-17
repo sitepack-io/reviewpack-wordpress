@@ -1,0 +1,193 @@
+.reviewpack-container {
+    width: calc(100% + 18px);
+    height: auto;
+    margin-left: -18px;
+}
+.reviewpack-container .reviewpack-pull-right {
+    float: right;
+}
+
+.reviewpack-container .reviewpack-heading, .reviewpack-container .reviewpack-menu {
+    background: #fff;
+    width: 100%;
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+}
+
+.reviewpack-container .reviewpack-heading img.reviewpack-icon {
+    margin: 3px 20px;
+    display: inline-block;
+}
+
+.reviewpack-container .reviewpack-heading h1 {
+    font-size: 22px;
+    padding-left: 10px;
+}
+
+.reviewpack-container .reviewpack-heading a.reviewpack-admin-login {
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 18px;
+    margin-right: 10px;
+}
+
+.reviewpack-container .reviewpack-heading a.reviewpack-admin-login span.dashicons {
+    text-decoration: none;
+    font-size: 16px;
+    padding-top: 6px;
+}
+
+.reviewpack-container .reviewpack-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: table;
+}
+
+.reviewpack-container .reviewpack-menu li {
+    display: table-cell;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.reviewpack-container .reviewpack-menu ul li a {
+    display: block;
+    padding: 10px;
+    line-height: 35px;
+    font-size: 15px;
+    border-bottom: 2px solid #fff;
+    text-decoration: none;
+    color: #042633;
+    margin-right: 20px;
+}
+
+.reviewpack-container .reviewpack-menu a.reviewpack-status {
+    display: block;
+    float: right;
+    margin-top: -42px;
+    margin-right: 10px;
+    border-radius: 3px;
+    padding: 4px;
+    text-decoration: none;
+}
+
+.reviewpack-container .reviewpack-menu a.reviewpack-status:hover {
+    font-weight: 700;
+}
+
+.reviewpack-container .reviewpack-menu a.reviewpack-status-not-connected {
+    background-color: red;
+    color: #fff !important;
+}
+
+.reviewpack-container .reviewpack-menu a.reviewpack-status-connected {
+    background-color: #3bb977;
+    color: #fff !important;
+}
+
+.reviewpack-container .reviewpack-menu a.active, .reviewpack-container .reviewpack-menu a:hover, .reviewpack-container .reviewpack-menu a:focus {
+    border-color: #3bb977;
+    color: #3bb977;
+}
+
+.reviewpack-container .reviewpack-heading h1 {
+    margin: 0;
+    padding-top: 25px;
+    display: inline-block;
+}
+
+.reviewpack-container .reviewpack-body {
+    padding-left: 18px;
+}
+
+.reviewpack-alert {
+    border: 1px solid #000;
+    border-left-width: 3px;
+    background: #fff;
+    width: 100%;
+    max-width: 450px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.reviewpack-alert-error {
+    border-color: #c80418;
+    color: #c80418;
+}
+
+.reviewpack-alert-info {
+    border-color: #256fd4;
+}
+
+.reviewpack-dashboard .reviewpack-block {
+    float: left;
+    display: inline-block;
+    width: 30%;
+    margin-right: 15px;
+    margin-bottom: 25px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.reviewpack-dashboard .reviewpack-block h3 {
+    margin-top: 5px;
+}
+.reviewpack-dashboard .reviewpack-block .reviewpack-button-right {
+    float: right;
+    margin-top: -6px;
+}
+.reviewpack-dashboard .reviewpack-block .reviewpack-button-right .dashicons {
+    font-weight: 400;
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+p.reviewpack-lead {
+    font-size: 15px;
+}
+
+.reviewpack-mail-preview {
+    max-width: 370px;
+    margin: 10px auto;
+}
+
+.reviewpack-mail-preview p {
+    font-size: 15px;
+}
+
+.reviewpack-mail-preview p.reviewpack-mail-powered {
+    font-size: 14px;
+    color: #6e6e6e;
+    padding-bottom: 15px;
+}
+
+.reviewpack-mail-preview .reviewpack-cta-button {
+    background-color: #3bb977;
+    border-color: #3bb977;
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    padding: 15px 10px;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    width: 96%;
+    text-decoration: none;
+}
+
+.reviewpack-stars .dashicons-star-filled,.reviewpack-stars .half,.reviewpack-stars .dashicons-star-empty {
+    color: orange;
+}
+
+.reviewpack-dashboard {
+    clear: both;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 1600px) {
+    .reviewpack-block {
+        width: 47%;
+    }
+}
