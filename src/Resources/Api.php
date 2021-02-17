@@ -7,6 +7,7 @@ use ReviewPack\Models\AbstractResource;
 use ReviewPack\Models\Company;
 use ReviewPack\Models\CompanyScore;
 use ReviewPack\Models\CompanyValidated;
+use ReviewPack\Models\Invite;
 use ReviewPack\Models\InviteTemplate;
 use ReviewPack\Models\Review;
 
@@ -136,6 +137,31 @@ class Api
         );
 
         return get_transient(Settings::TRANSIENT_NEWEST_REVIEWS);
+    }
+
+    /**
+     * @param string $token
+     * @param string $secret
+     * @param string $company
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getRecentInvites(string $token, string $secret, string $company)
+    {
+        if (!empty(get_transient(Settings::TRANSIENT_NEWEST_INVITES))) {
+            return get_transient(Settings::TRANSIENT_NEWEST_INVITES);
+        }
+
+        $data = $this->callApi('GET', self::REVIEWPACK_API_URL . '/invites/newest?company=' . $company, $token, $secret);
+        $newest = $this->mapDataToObjectsCollection($data->invites, Invite::class);
+
+        set_transient(
+            Settings::TRANSIENT_NEWEST_INVITES,
+            $newest,
+            (60 * 10)
+        );
+
+        return get_transient(Settings::TRANSIENT_NEWEST_INVITES);
     }
 
     /**

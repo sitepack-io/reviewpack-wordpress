@@ -142,7 +142,6 @@
                 </div>
 
                 <div class="reviewpack-dashboard">
-
                     <div class="reviewpack-block">
                         <h3>
                             <?= __('Recent reviews', 'reviewpack') ?>
@@ -162,47 +161,80 @@
                             <tbody>
                             <?php foreach ($recentReviews as $review): ?>
                                 <tr>
-                                    <td><p>
-                        <span class="reviewpack-stars">
-                        <?php if ($review->stars_total >= 10): ?>
-                            <span class="dashicons dashicons-star-filled"></span>
-                        <?php elseif ($review->stars_total >= 5): ?>
-                            <span class="dashicons dashicons-star-half"></span>
-                        <?php else: ?>
-                            <span class="dashicons dashicons-star-empty"></span>
-                        <?php endif; ?>
-                            <?php if ($review->stars_total >= 20): ?>
-                                <span class="dashicons dashicons-star-filled"></span>
-                            <?php elseif ($review->stars_total >= 15): ?>
-                                <span class="dashicons dashicons-star-half"></span>
-                            <?php else: ?>
-                                <span class="dashicons dashicons-star-empty"></span>
-                            <?php endif; ?>
-                            <?php if ($review->stars_total >= 30): ?>
-                                <span class="dashicons dashicons-star-filled"></span>
-                            <?php elseif ($review->stars_total >= 25): ?>
-                                <span class="dashicons dashicons-star-half"></span>
-                            <?php else: ?>
-                                <span class="dashicons dashicons-star-empty"></span>
-                            <?php endif; ?>
-                            <?php if ($review->stars_total >= 40): ?>
-                                <span class="dashicons dashicons-star-filled"></span>
-                            <?php elseif ($review->stars_total >= 35): ?>
-                                <span class="dashicons dashicons-star-half"></span>
-                            <?php else: ?>
-                                <span class="dashicons dashicons-star-empty"></span>
-                            <?php endif; ?>
-                            <?php if ($review->stars_total >= 50): ?>
-                                <span class="dashicons dashicons-star-filled"></span>
-                            <?php elseif ($review->stars_total >= 45): ?>
-                                <span class="dashicons dashicons-star-half"></span>
-                            <?php else: ?>
-                                <span class="dashicons dashicons-star-empty"></span>
-                            <?php endif; ?>
-                        </span>
-                                        </p></td>
-                                    <td><?= \esc_attr($review->title) ?></td>
+                                    <td>
+                                        <p>
+                                            <span class="reviewpack-stars">
+                                            <?php if ($review->stars_total >= 10): ?>
+                                                <span class="dashicons dashicons-star-filled"></span>
+                                            <?php elseif ($review->stars_total >= 5): ?>
+                                                <span class="dashicons dashicons-star-half"></span>
+                                            <?php else: ?>
+                                                <span class="dashicons dashicons-star-empty"></span>
+                                            <?php endif; ?>
+                                                <?php if ($review->stars_total >= 20): ?>
+                                                    <span class="dashicons dashicons-star-filled"></span>
+                                                <?php elseif ($review->stars_total >= 15): ?>
+                                                    <span class="dashicons dashicons-star-half"></span>
+                                                <?php else: ?>
+                                                    <span class="dashicons dashicons-star-empty"></span>
+                                                <?php endif; ?>
+                                                <?php if ($review->stars_total >= 30): ?>
+                                                    <span class="dashicons dashicons-star-filled"></span>
+                                                <?php elseif ($review->stars_total >= 25): ?>
+                                                    <span class="dashicons dashicons-star-half"></span>
+                                                <?php else: ?>
+                                                    <span class="dashicons dashicons-star-empty"></span>
+                                                <?php endif; ?>
+                                                <?php if ($review->stars_total >= 40): ?>
+                                                    <span class="dashicons dashicons-star-filled"></span>
+                                                <?php elseif ($review->stars_total >= 35): ?>
+                                                    <span class="dashicons dashicons-star-half"></span>
+                                                <?php else: ?>
+                                                    <span class="dashicons dashicons-star-empty"></span>
+                                                <?php endif; ?>
+                                                <?php if ($review->stars_total >= 50): ?>
+                                                    <span class="dashicons dashicons-star-filled"></span>
+                                                <?php elseif ($review->stars_total >= 45): ?>
+                                                    <span class="dashicons dashicons-star-half"></span>
+                                                <?php else: ?>
+                                                    <span class="dashicons dashicons-star-empty"></span>
+                                                <?php endif; ?>
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td><?php if(empty($review->title)){
+                                        echo __('No title', 'reviewpack');
+                                    }else{
+                                        echo esc_attr($review->title);
+                                    } ?></td>
                                     <td><?= \date(get_option('date_format'), \strtotime($review->created)) ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="reviewpack-block">
+                        <h3>
+                            <?= __('Recent invites', 'reviewpack') ?>
+                            <a href="https://reviewpack.eu/portal" target="_blank" rel="noopener"
+                               class="button reviewpack-button-right">
+                                <?= __('Manage invites', 'reviewpack') ?>
+                                <span class="dashicons dashicons-external"></span>
+                            </a>
+                        </h3>
+
+                        <table width="100%">
+                            <thead>
+                            <th><?= __('Customer', 'reviewpack') ?></th>
+                            <th width="120"><?= __('Created', 'reviewpack') ?></th>
+                            <th width="120"><?= __('Planned', 'reviewpack') ?></th>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($recentInvites as $invite): ?>
+                                <tr>
+                                    <td><?= \esc_attr($invite->first_name) ?> <?= \esc_attr($invite->last_name) ?></td>
+                                    <td><?= \date(get_option('date_format'), \strtotime($invite->created)) ?></td>
+                                    <td><?= \date(get_option('date_format'), \strtotime($invite->planned)) ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

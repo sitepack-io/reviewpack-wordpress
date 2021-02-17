@@ -116,6 +116,11 @@ class Admin
                 $this->settings->getOption(Settings::SETTING_API_SECRET),
                 $this->settings->getOption(Settings::SETTING_COMPANY_UUID)
             );
+            $recentInvites = $this->api->getRecentInvites(
+                $this->settings->getOption(Settings::SETTING_API_TOKEN),
+                $this->settings->getOption(Settings::SETTING_API_SECRET),
+                $this->settings->getOption(Settings::SETTING_COMPANY_UUID)
+            );
         }
 
         include(REVIEWPACK_PLUGIN_DIR . '/views/admin_dashboard.php');

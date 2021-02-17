@@ -25,6 +25,7 @@ class Settings
     const SETTING_COMPANY_UUID = 'company_uuid';
 
     const TRANSIENT_NEWEST_REVIEWS = 'reviewpack_newest_reviews';
+    const TRANSIENT_NEWEST_INVITES = 'reviewpack_newest_invites';
     const TRANSIENT_CURRENT_COMPANY = 'reviewpack_transient_data';
 
     const INVITE_TEMPLATE_FIRST_MAIL = 1;
