@@ -186,6 +186,10 @@ p.reviewpack-lead {
     margin-bottom: 20px;
 }
 
+.reviewpack-body form p {
+    max-width: 600px;
+}
+
 .reviewpack-block table {
     width: 100%;
 }

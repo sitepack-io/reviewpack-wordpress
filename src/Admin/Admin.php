@@ -39,17 +39,58 @@ class Admin
     {
         add_action('admin_menu', [$this, 'registerSettingsPage']);
         add_action('admin_init', [$this->settings, 'registerSettings']);
+        add_action('admin_init', [$this, 'adminInit']);
         add_action('admin_enqueue_scripts', [$this, 'addAdminStyles']);
-        add_action('admin_menu', [$this, 'my_menu_pages']);
+        add_action('admin_menu', [$this, 'reviewPackAdminPages']);
 
+        $this->registerInviteHooks();
     }
 
-    public function my_menu_pages()
+    /**
+     * Register the invite hooks
+     */
+    private function registerInviteHooks()
+    {
+        $integrationsHandler = new Integrations($this->settings, $this->api);
+        $integrations = $this->settings->getOption(Settings::SETTING_INTEGRATIONS);
+
+        if (in_array('woocommerce', $integrations)) {
+            add_action('woocommerce_order_status_processing', [$integrationsHandler, 'createWooCommerceInvite']);
+            add_action('woocommerce_order_status_completed', [$integrationsHandler, 'createWooCommerceInvite']);
+//        add_action( 'woocommerce_order_status_refunded', 'mysite_refunded');
+//        add_action( 'woocommerce_order_status_cancelled', 'mysite_cancelled');
+        }
+    }
+
+    /**
+     * Triggered an admin init hook
+     */
+    public function adminInit()
+    {
+        if (empty($this->settings->getOption(Settings::SETTING_API_TOKEN)) || empty($this->settings->getOption(Settings::SETTING_API_SECRET))) {
+            if (\stripos($_SERVER['REQUEST_URI'], 'reviewpack-settings') === false) {
+                add_action('admin_notices', [$this, 'noticeActivateAccount']);
+            }
+        } elseif ($this->settings->getOption(Settings::SETTING_COMPANY_UUID) !== null) {
+            if (\stripos($_SERVER['REQUEST_URI'], 'reviewpack-settings') === false) {
+                $integrations = $this->settings->getOption(Settings::SETTING_INTEGRATIONS);
+
+                if ($integrations === null || \count($integrations) === 0) {
+                    add_action('admin_notices', [$this, 'noticeIntegration']);
+                }
+            }
+        }
+    }
+
+    /**
+     * Link reviewpack menu pages
+     */
+    public function reviewPackAdminPages()
     {
         remove_menu_page('options-general.php?page=reviewpack-settings');
 
         add_menu_page(__('ReviewPack dashboard', 'reviewpack'), 'ReviewPack', 'manage_options', 'reviewpack', [$this, 'renderAdminPage'], 'dashicons-star-filled', 60.43985748);
-//        add_submenu_page('reviewpack-dashboard', 'Settings', _('Dashboard'), 'manage_options', 'admin.php?page=reviewpack-dashboard');
+//        add_submenu_page('reviewpack', 'Settings', _('Dashboard'), 'manage_options', 'admin.php?page=reviewpack-dashboard');
         add_submenu_page('reviewpack', 'Settings', __('Invite mail', 'reviewpack'), 'manage_options', 'reviewpack-invites', [$this, 'renderAdminPage']);
     }
 
@@ -62,7 +103,29 @@ class Admin
     }
 
     /**
-     *
+     * Show an integration notice
+     */
+    public function noticeIntegration()
+    {
+        echo '<div class="notice notice-warning"><p>';
+        echo __('Please activate an integration in the ReviewPack settings. Otherwise we will not be able to send invitations!', 'reviewpack');
+        echo ' <a href="' . admin_url('options-general.php?page=reviewpack-settings') . '" class="button">' . __('Configure now', 'reviewpack') . '</a>';
+        echo '</p></div>';
+    }
+
+    /**
+     * Show an activate account notice
+     */
+    public function noticeActivateAccount()
+    {
+        echo '<div class="notice notice-warning"><p>';
+        echo __('Please validate the ReviewPack plugin settings and connect a (free) ReviewPack account. Otherwise we will not be able to send invitations!', 'reviewpack');
+        echo ' <a href="' . admin_url('options-general.php?page=reviewpack-settings') . '" class="button">' . __('Configure now', 'reviewpack') . '</a>';
+        echo '</p></div>';
+    }
+
+    /**
+     * Render a specific admin page for reviewpack
      */
     public function renderAdminPage()
     {
@@ -79,6 +142,9 @@ class Admin
                 break;
             case 'reviewpack-invites':
                 $this->renderInvitesPage();
+                break;
+            default:
+                echo '<p>Invalid callback</p>';
                 break;
         }
     }
@@ -133,7 +199,7 @@ class Admin
     {
         $isConnected = $this->isConnected();
 
-        if($isConnected === true){
+        if ($isConnected === true) {
             $inviteTemplate = $this->api->getInviteTemplate(
                 $this->settings->getOption(Settings::SETTING_API_TOKEN),
                 $this->settings->getOption(Settings::SETTING_API_SECRET),
@@ -146,6 +212,9 @@ class Admin
         include(REVIEWPACK_PLUGIN_DIR . '/views/admin_invites.php');
     }
 
+    /**
+     * Add admin styles
+     */
     public function addAdminStyles()
     {
         wp_enqueue_style('admin-reviewpack-styles', plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) . '/assets/reviewpack_admin.css');
@@ -181,6 +250,5 @@ class Admin
 
         return true;
     }
-
 
 }

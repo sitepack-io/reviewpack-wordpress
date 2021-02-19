@@ -1,8 +1,7 @@
 <div class="reviewpack-container">
     <div class="reviewpack-heading">
         <a href="https://reviewpack.eu" target="_blank">
-        <img src="<?= plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/icon_64.png" alt="ReviewPack icon"
-             class="reviewpack-icon" align="left"/>
+        <img src="<?= plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/icon_64.png" alt="ReviewPack icon" class="reviewpack-icon" align="left"/>
         </a>
         <h1><?= __('ReviewPack settings', 'reviewpack') ?></h1>
 
@@ -32,6 +31,11 @@
 
     <div class="reviewpack-body">
         <div class="wrap">
+            <?php if ($isConnected === false): ?>
+            <?php
+            include('not_connected_body.php');
+            ?>
+            <?php endif; ?>
             <form action="options.php" method="post">
                 <?php
                 settings_fields('reviewpack_plugin_options');

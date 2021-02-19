@@ -9,7 +9,7 @@ define('REVIEWPACK_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('REVIEWPACK_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
 /**
- * Plugin Name: ReviewPack - Company and Product Reviews
+ * Plugin Name: ReviewPack Reviews
  * Plugin URI: https://reviewpack.eu
  * Description: Collect feedback about your company and site with this plugin for ReviewPack. Improve your business quality and sales.
  * Version: 1.0.0

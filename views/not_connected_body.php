@@ -5,7 +5,7 @@
 
     <h3><?= __('Why should I register?') ?></h3>
     <ul class="ul-disc">
-        <li><?= __('We invite your customers automatically', 'reviewpack') ?></li>
+        <li><?= __('We invite your customers automatically by email', 'reviewpack') ?></li>
         <li><?= __('Public review page that increases trust in your online store', 'reviewpack') ?></li>
         <li><?= __('Show widgets with your review score to increase conversion rates', 'reviewpack') ?></li>
         <li><?= __('Start with a free account', 'reviewpack') ?></li>

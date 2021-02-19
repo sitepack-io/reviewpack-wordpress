@@ -165,6 +165,58 @@ class Api
     }
 
     /**
+     * Create/plan an invite in the API
+     *
+     * @param $token
+     * @param $secret
+     * @param $company
+     * @param $email
+     * @param $firstName
+     * @param $lastName
+     * @param \DateTimeImmutable $date
+     * @param $referenceOne
+     * @param $referenceTwo
+     * @param $referenceThree
+     * @throws \Exception
+     */
+    public function createInvite($token, $secret, $company, $email, $firstName, $lastName, \DateTimeImmutable $date, $currency, $totalOrderAmountCents, $referenceOne, $referenceTwo, $referenceThree)
+    {
+        $postFields = [
+            'company' => $company,
+            'email' => \trim(\strtolower($email)),
+            'first_name' => \trim(\ucfirst($firstName)),
+            'date' => $date->format('Y-m-d H:i:s'),
+        ];
+
+        if (!empty($lastName)) {
+            $postFields['last_name'] = $lastName;
+        }
+        if (!empty($referenceOne)) {
+            $postFields['reference_one'] = $referenceOne;
+        }
+        if (!empty($referenceTwo)) {
+            $postFields['reference_two'] = $referenceTwo;
+        }
+        if (!empty($referenceThree)) {
+            $postFields['reference_three'] = $referenceThree;
+        }
+        if (!empty($currency)) {
+            $postFields['currency'] = $currency;
+        }
+        if (!empty($totalOrderAmountCents)) {
+            $postFields['total_order_cents'] = $totalOrderAmountCents;
+        }
+
+        $data = $this->callApi('POST', self::REVIEWPACK_API_URL . '/invites/add', $token, $secret, $postFields);
+
+        if (isset($data->uuid)) {
+            return $data->uuid;
+        }
+
+        return false;
+    }
+
+    /**
      * @param $type
      * @param $url
      * @param $token
