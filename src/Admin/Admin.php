@@ -54,7 +54,7 @@ class Admin
         $integrationsHandler = new Integrations($this->settings, $this->api);
         $integrations = $this->settings->getOption(Settings::SETTING_INTEGRATIONS);
 
-        if (in_array('woocommerce', $integrations)) {
+        if (\is_array($integrations) && \in_array('woocommerce', $integrations)) {
             add_action('woocommerce_order_status_processing', [$integrationsHandler, 'createWooCommerceInvite']);
             add_action('woocommerce_order_status_completed', [$integrationsHandler, 'createWooCommerceInvite']);
 //        add_action( 'woocommerce_order_status_refunded', 'mysite_refunded');
@@ -228,7 +228,7 @@ class Admin
         $transient = get_transient(Settings::TRANSIENT_CURRENT_COMPANY);
 
         if (empty($transient)) {
-            if (!empty(Settings::SETTING_API_TOKEN) && !empty(Settings::SETTING_API_SECRET)) {
+            if (!empty($this->settings->getOption(Settings::SETTING_API_TOKEN)) && !empty($this->settings->getOption(Settings::SETTING_API_SECRET))) {
                 try {
                     $this->api->validateCompany(
                         $this->settings->getOption(Settings::SETTING_API_TOKEN),
@@ -244,11 +244,11 @@ class Admin
             return false;
         }
 
-        if (empty($transient->uuid)) {
-            return false;
+        if (!empty($transient->uuid)) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
 }
