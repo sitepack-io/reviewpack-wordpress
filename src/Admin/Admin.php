@@ -55,8 +55,10 @@ class Admin
         $integrations = $this->settings->getOption(Settings::SETTING_INTEGRATIONS);
 
         if (\is_array($integrations) && \in_array('woocommerce', $integrations)) {
-            add_action('woocommerce_order_status_processing', [$integrationsHandler, 'createWooCommerceInvite']);
             add_action('woocommerce_order_status_completed', [$integrationsHandler, 'createWooCommerceInvite']);
+
+            // debugging actions:
+//            add_action('woocommerce_order_status_processing', [$integrationsHandler, 'createWooCommerceInvite']);
 //        add_action( 'woocommerce_order_status_refunded', 'mysite_refunded');
 //        add_action( 'woocommerce_order_status_cancelled', 'mysite_cancelled');
         }
@@ -91,6 +93,7 @@ class Admin
 
         add_menu_page(__('ReviewPack dashboard', 'reviewpack'), 'ReviewPack', 'manage_options', 'reviewpack', [$this, 'renderAdminPage'], 'dashicons-star-filled', 60.43985748);
 //        add_submenu_page('reviewpack', 'Settings', _('Dashboard'), 'manage_options', 'admin.php?page=reviewpack-dashboard');
+//        add_submenu_page('reviewpack', 'Widgets', __('Widgets', 'reviewpack'), 'manage_options', 'reviewpack-widgets', [$this, 'renderAdminPage']);
         add_submenu_page('reviewpack', 'Settings', __('Invite mail', 'reviewpack'), 'manage_options', 'reviewpack-invites', [$this, 'renderAdminPage']);
     }
 
