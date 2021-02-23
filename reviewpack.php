@@ -14,7 +14,7 @@ define('REVIEWPACK_PLUGIN_DIR', plugin_dir_path(__FILE__));
  * Description: Collect feedback about your company and site with this plugin for ReviewPack. Improve your business quality and sales.
  * Version: 1.0.0
  * Author: Team ReviewPack
- * Author URI: https://reviewpack.eu
+ * Author URI: https://reviewpack.eu/about-us
  * Text Domain: reviewpack
  * Domain Path: /languages/
  *

@@ -1,37 +1,37 @@
 <div class="reviewpack-container">
     <div class="reviewpack-heading">
         <a href="https://reviewpack.eu" target="_blank">
-            <img src="<?= plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/icon_64.png" alt="ReviewPack icon"
+            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/icon_64.png" alt="ReviewPack icon"
                  class="reviewpack-icon" align="left"/>
         </a>
-        <h1><?= __('ReviewPack settings', 'reviewpack') ?></h1>
+        <h1><?php echo __('ReviewPack settings', 'reviewpack') ?></h1>
 
         <a href="https://reviewpack.eu/login?utm_source=wordpress&utm_medium=button_right_top&utm_campaign=wp_plugin"
            target="_blank" rel="noopener"
            class="reviewpack-pull-right reviewpack-admin-login button">
-            <?= __('Open ReviewPack', 'reviewpack') ?>
+            <?php echo __('Open ReviewPack', 'reviewpack') ?>
             <span class="dashicons dashicons-external"></span>
         </a>
     </div>
     <div class="reviewpack-menu">
         <ul>
-            <li><a href="<?= admin_url('admin.php?page=reviewpack') ?>"><?= __('Dashboard', 'reviewpack') ?></a></li>
+            <li><a href="<?php echo admin_url('admin.php?page=reviewpack') ?>"><?php echo __('Dashboard', 'reviewpack') ?></a></li>
             <li>
-                <a href="<?= admin_url('options-general.php?page=reviewpack-settings') ?>"><?= __('Settings', 'reviewpack') ?></a>
+                <a href="<?php echo admin_url('options-general.php?page=reviewpack-settings') ?>"><?php echo __('Settings', 'reviewpack') ?></a>
             </li>
-            <li><a href="<?= admin_url('admin.php?page=reviewpack-invites') ?>"
-                   class="active"><?= __('Invite mail', 'reviewpack') ?></a></li>
+            <li><a href="<?php echo admin_url('admin.php?page=reviewpack-invites') ?>"
+                   class="active"><?php echo __('Invite mail', 'reviewpack') ?></a></li>
         </ul>
 
         <?php if ($isConnected === false): ?>
-            <a href="<?= admin_url('options-general.php?page=reviewpack-settings') ?>"
+            <a href="<?php echo admin_url('options-general.php?page=reviewpack-settings') ?>"
                class="reviewpack-status reviewpack-status-not-connected">
-                <?= __('Not connected', 'reviewpack') ?>
+                <?php echo __('Not connected', 'reviewpack') ?>
             </a>
         <?php else: ?>
-            <a href="<?= admin_url('options-general.php?page=reviewpack-settings') ?>"
+            <a href="<?php echo admin_url('options-general.php?page=reviewpack-settings') ?>"
                class="reviewpack-status reviewpack-status-connected">
-                <?= __('Connected', 'reviewpack') ?>
+                <?php echo __('Connected', 'reviewpack') ?>
             </a>
         <?php endif; ?>
     </div>
@@ -46,44 +46,44 @@
                 <div class="reviewpack-dashboard">
                     <div class="reviewpack-block">
                         <h3>
-                            <?= __('First invitation mail to customer', 'reviewpack') ?>
+                            <?php echo __('First invitation mail to customer', 'reviewpack') ?>
                             <a href="https://reviewpack.eu/portal" target="_blank" rel="noopener" class="button reviewpack-button-right">
-                                <?= __('Edit mail', 'reviewpack') ?>
+                                <?php echo __('Edit mail', 'reviewpack') ?>
                                 <span class="dashicons dashicons-external"></span>
                             </a>
                         </h3>
 
                         <p class="reviewpack-lead">
-                            <strong><?= __('Subject', 'reviewpack') ?>:</strong><br/>
-                            <?= \esc_html($inviteTemplate->subject) ?>
+                            <strong><?php echo __('Subject', 'reviewpack') ?>:</strong><br/>
+                            <?php echo \esc_html($inviteTemplate->subject) ?>
                         </p>
 
                         <hr>
 
                         <div class="reviewpack-mail-preview">
-                            <h3><?= __('Hi [name],', 'reviewpack') ?></h3>
+                            <h3><?php echo __('Hi [name],', 'reviewpack') ?></h3>
 
-                            <p><?= \esc_html($inviteTemplate->first_row) ?></p>
-                            <p><?= \esc_html($inviteTemplate->second_row) ?></p>
+                            <p><?php echo \esc_html($inviteTemplate->first_row) ?></p>
+                            <p><?php echo \esc_html($inviteTemplate->second_row) ?></p>
 
                             <p align="center">
-                                <strong><?= __('Click on the desired number of stars:', 'reviewpack') ?></strong><br/>
-                                <img src="<?= plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/stars.png"
+                                <strong><?php echo __('Click on the desired number of stars:', 'reviewpack') ?></strong><br/>
+                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/stars.png"
                                      alt="stars"/>
                             </p>
 
                             <p>
                                 <a href="#" class="reviewpack-cta-button">
-                                    <?= \esc_html($inviteTemplate->button_label) ?>
+                                    <?php echo \esc_html($inviteTemplate->button_label) ?>
                                 </a>
                             </p>
 
-                            <p><?= __('Sincerely,', 'reviewpack') ?><br/>
-                                Team <?= \esc_html($company->name) ?></p>
+                            <p><?php echo __('Sincerely,', 'reviewpack') ?><br/>
+                                Team <?php echo \esc_html($company->name) ?></p>
 
                             <p align="center" class="reviewpack-mail-powered">
-                                <?= __('Powered by:') ?><br />
-                                <img src="<?= plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/logo_full_40.png" />
+                                <?php echo __('Powered by:') ?><br />
+                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/logo_full_40.png" />
                             </p>
 
                         </div>

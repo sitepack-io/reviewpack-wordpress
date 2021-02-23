@@ -91,10 +91,10 @@ class Admin
     {
         remove_menu_page('options-general.php?page=reviewpack-settings');
 
-        add_menu_page(__('ReviewPack dashboard', 'reviewpack'), 'ReviewPack', 'manage_options', 'reviewpack', [$this, 'renderAdminPage'], 'dashicons-star-filled', 60.43985748);
+        add_menu_page(__('ReviewPack dashboard', 'reviewpack'), 'ReviewPack', 'manage_options', 'reviewpack', [$this, 'renderDashboardPage'], 'dashicons-star-filled', 60.43985748);
 //        add_submenu_page('reviewpack', 'Settings', _('Dashboard'), 'manage_options', 'admin.php?page=reviewpack-dashboard');
 //        add_submenu_page('reviewpack', 'Widgets', __('Widgets', 'reviewpack'), 'manage_options', 'reviewpack-widgets', [$this, 'renderAdminPage']);
-        add_submenu_page('reviewpack', 'Settings', __('Invite mail', 'reviewpack'), 'manage_options', 'reviewpack-invites', [$this, 'renderAdminPage']);
+        add_submenu_page('reviewpack', 'Settings', __('Invite mail', 'reviewpack'), 'manage_options', 'reviewpack-invites', [$this, 'renderInvitesPage']);
     }
 
     /**
@@ -111,7 +111,7 @@ class Admin
     public function noticeIntegration()
     {
         echo '<div class="notice notice-warning"><p>';
-        echo __('Please activate an integration in the ReviewPack settings. Otherwise we will not be able to send invitations!', 'reviewpack');
+        echo __('Please activate an integration in the ReviewPack settings. Otherwise we will not be able to send invitations automatically!', 'reviewpack');
         echo ' <a href="' . admin_url('options-general.php?page=reviewpack-settings') . '" class="button">' . __('Configure now', 'reviewpack') . '</a>';
         echo '</p></div>';
     }
@@ -125,31 +125,6 @@ class Admin
         echo __('Please validate the ReviewPack plugin settings and connect a (free) ReviewPack account. Otherwise we will not be able to send invitations!', 'reviewpack');
         echo ' <a href="' . admin_url('options-general.php?page=reviewpack-settings') . '" class="button">' . __('Configure now', 'reviewpack') . '</a>';
         echo '</p></div>';
-    }
-
-    /**
-     * Render a specific admin page for reviewpack
-     */
-    public function renderAdminPage()
-    {
-        if (!isset($_GET['page'])) {
-            echo '<p>Invalid callback</p>';
-            return;
-        }
-
-        $page = $_GET['page'];
-
-        switch ($page) {
-            case 'reviewpack':
-                $this->renderDashboardPage();
-                break;
-            case 'reviewpack-invites':
-                $this->renderInvitesPage();
-                break;
-            default:
-                echo '<p>Invalid callback</p>';
-                break;
-        }
     }
 
     /**

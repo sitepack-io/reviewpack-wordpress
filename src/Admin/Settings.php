@@ -195,7 +195,7 @@ class Settings
         }
 
         if ($totalAvailable === 0) {
-            echo "<i>" . __('No compatible integrations activated, please contact us!', 'reviewpack') . "</i>";
+            echo "<i>" . __('No compatible integrations activated, please contact us with your wishes! Currently, only WooCommerce is supported.', 'reviewpack') . "</i>";
         }
     }
 
