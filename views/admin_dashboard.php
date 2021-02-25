@@ -23,6 +23,9 @@
             <li>
                 <a href="<?php echo admin_url('admin.php?page=reviewpack-invites') ?>"><?php echo __('Invite mail', 'reviewpack') ?></a>
             </li>
+            <li>
+                <a href="<?php echo admin_url('admin.php?page=reviewpack-widgets') ?>"><?php echo __('Widgets', 'reviewpack') ?></a>
+            </li>
         </ul>
 
         <?php if ($isConnected === false): ?>
@@ -71,41 +74,33 @@
                         <?php else: ?>
                             <p>
                         <span class="reviewpack-stars">
-                        <?php if ($companyScore->avg_score >= 10): ?>
-                            <span class="dashicons dashicons-star-filled"></span>
-                        <?php elseif ($companyScore->avg_score >= 5): ?>
-                            <span class="dashicons dashicons-star-half"></span>
+                        <?php if ($companyScore->avg_score == 50): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_50_5.png" alt="Stars 5"/>
+                        <?php elseif ($companyScore->avg_score == 40): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_40_5.png" alt="Stars 4"/>
+                        <?php elseif ($companyScore->avg_score == 30): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_30_5.png" alt="Stars 3"/>
+                        <?php elseif ($companyScore->avg_score == 20): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_20_5.png" alt="Stars 2"/>
+                        <?php elseif ($companyScore->avg_score == 10): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_10_5.png" alt="Stars 1"/>
+                        <?php elseif ($companyScore->avg_score <= 50 && $companyScore->avg_score >= 45): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_45_5.png" alt="Stars 5"/>
+                        <?php elseif ($companyScore->avg_score <= 44 && $companyScore->avg_score >= 40): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_40_5.png" alt="Stars 5"/>
+                        <?php elseif ($companyScore->avg_score <= 40 && $companyScore->avg_score >= 34): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_35_5.png" alt="Stars 5"/>
+                        <?php elseif ($companyScore->avg_score <= 34 && $companyScore->avg_score >= 30): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_30_5.png" alt="Stars 5"/>
+                        <?php elseif ($companyScore->avg_score <= 30 && $companyScore->avg_score >= 24): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_25_5.png" alt="Stars 5"/>
+                        <?php elseif ($companyScore->avg_score <= 24 && $companyScore->avg_score >= 20): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_20_5.png" alt="Stars 5"/>
+                        <?php elseif ($companyScore->avg_score <= 20 && $companyScore->avg_score >= 15): ?>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_15_5.png" alt="Stars 5"/>
                         <?php else: ?>
-                            <span class="dashicons dashicons-star-empty"></span>
+                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_10_5.png" alt="Stars 5"/>
                         <?php endif; ?>
-                            <?php if ($companyScore->avg_score >= 20): ?>
-                                <span class="dashicons dashicons-star-filled"></span>
-                            <?php elseif ($companyScore->avg_score >= 15): ?>
-                                <span class="dashicons dashicons-star-half"></span>
-                            <?php else: ?>
-                                <span class="dashicons dashicons-star-empty"></span>
-                            <?php endif; ?>
-                            <?php if ($companyScore->avg_score >= 30): ?>
-                                <span class="dashicons dashicons-star-filled"></span>
-                            <?php elseif ($companyScore->avg_score >= 25): ?>
-                                <span class="dashicons dashicons-star-half"></span>
-                            <?php else: ?>
-                                <span class="dashicons dashicons-star-empty"></span>
-                            <?php endif; ?>
-                            <?php if ($companyScore->avg_score >= 40): ?>
-                                <span class="dashicons dashicons-star-filled"></span>
-                            <?php elseif ($companyScore->avg_score >= 35): ?>
-                                <span class="dashicons dashicons-star-half"></span>
-                            <?php else: ?>
-                                <span class="dashicons dashicons-star-empty"></span>
-                            <?php endif; ?>
-                            <?php if ($companyScore->avg_score >= 50): ?>
-                                <span class="dashicons dashicons-star-filled"></span>
-                            <?php elseif ($companyScore->avg_score >= 45): ?>
-                                <span class="dashicons dashicons-star-half"></span>
-                            <?php else: ?>
-                                <span class="dashicons dashicons-star-empty"></span>
-                            <?php endif; ?>
                         </span>
                             </p>
                             <p>
@@ -155,52 +150,42 @@
                         <table width="100%">
                             <thead>
                             <th width="140"><?php echo __('Rating', 'reviewpack') ?></th>
-                            <th><?php echo __('Customer', 'reviewpack') ?></th>
+                            <th><?php echo __('Title', 'reviewpack') ?></th>
                             <th width="120"><?php echo __('Date', 'reviewpack') ?></th>
                             </thead>
                             <tbody>
                             <?php foreach ($recentReviews as $review): ?>
                                 <tr>
                                     <td>
-                                        <p>
                                             <span class="reviewpack-stars">
-                                            <?php if ($review->stars_total >= 10): ?>
-                                                <span class="dashicons dashicons-star-filled"></span>
-                                            <?php elseif ($review->stars_total >= 5): ?>
-                                                <span class="dashicons dashicons-star-half"></span>
+                                            <?php if ($review->stars_total == 50): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_50_5.png" alt="Stars 5"/>
+                                            <?php elseif ($review->stars_total == 40): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_40_5.png" alt="Stars 4"/>
+                                            <?php elseif ($review->stars_total == 30): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_30_5.png" alt="Stars 3"/>
+                                            <?php elseif ($review->stars_total == 20): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_20_5.png" alt="Stars 2"/>
+                                            <?php elseif ($review->stars_total == 10): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_10_5.png" alt="Stars 1"/>
+                                            <?php elseif ($review->stars_total <= 50 && $review->stars_total >= 45): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_45_5.png" alt="Stars 5"/>
+                                            <?php elseif ($review->stars_total <= 44 && $review->stars_total >= 40): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_40_5.png" alt="Stars 5"/>
+                                            <?php elseif ($review->stars_total <= 40 && $review->stars_total >= 34): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_35_5.png" alt="Stars 5"/>
+                                            <?php elseif ($review->stars_total <= 34 && $review->stars_total >= 30): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_30_5.png" alt="Stars 5"/>
+                                            <?php elseif ($review->stars_total <= 30 && $review->stars_total >= 24): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_25_5.png" alt="Stars 5"/>
+                                            <?php elseif ($review->stars_total <= 24 && $review->stars_total >= 20): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_20_5.png" alt="Stars 5"/>
+                                            <?php elseif ($review->stars_total <= 20 && $review->stars_total >= 15): ?>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_15_5.png" alt="Stars 5"/>
                                             <?php else: ?>
-                                                <span class="dashicons dashicons-star-empty"></span>
+                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_10_5.png" alt="Stars 5"/>
                                             <?php endif; ?>
-                                                <?php if ($review->stars_total >= 20): ?>
-                                                    <span class="dashicons dashicons-star-filled"></span>
-                                                <?php elseif ($review->stars_total >= 15): ?>
-                                                    <span class="dashicons dashicons-star-half"></span>
-                                                <?php else: ?>
-                                                    <span class="dashicons dashicons-star-empty"></span>
-                                                <?php endif; ?>
-                                                <?php if ($review->stars_total >= 30): ?>
-                                                    <span class="dashicons dashicons-star-filled"></span>
-                                                <?php elseif ($review->stars_total >= 25): ?>
-                                                    <span class="dashicons dashicons-star-half"></span>
-                                                <?php else: ?>
-                                                    <span class="dashicons dashicons-star-empty"></span>
-                                                <?php endif; ?>
-                                                <?php if ($review->stars_total >= 40): ?>
-                                                    <span class="dashicons dashicons-star-filled"></span>
-                                                <?php elseif ($review->stars_total >= 35): ?>
-                                                    <span class="dashicons dashicons-star-half"></span>
-                                                <?php else: ?>
-                                                    <span class="dashicons dashicons-star-empty"></span>
-                                                <?php endif; ?>
-                                                <?php if ($review->stars_total >= 50): ?>
-                                                    <span class="dashicons dashicons-star-filled"></span>
-                                                <?php elseif ($review->stars_total >= 45): ?>
-                                                    <span class="dashicons dashicons-star-half"></span>
-                                                <?php else: ?>
-                                                    <span class="dashicons dashicons-star-empty"></span>
-                                                <?php endif; ?>
                                             </span>
-                                        </p>
                                     </td>
                                     <td><?php if(empty($review->title)){
                                         echo __('No title', 'reviewpack');

@@ -1,10 +1,10 @@
 === ReviewPack: Reviews SEO ===
-Contributors: ReviewPack, petervw
-Donate link: https://reviewpack.eu?utm_source=wordpress&utm_medium=readme&utm_campaign=wp_plugin
+Contributors: ReviewPack
+Donate link: https://reviewpack.eu?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin
 Tags: review, reviews, seo, email, marketing, woocommerce, conversion, stars, rating, tool
 Requires at least: 5.4
 Tested up to: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.2
@@ -19,7 +19,7 @@ Collect customer feedback with your WordPress site. The #1 review tool!
 
 This plugin helps you to collect real reviews from your customers. ReviewPack only invites a customer to write a review if you have actually completed the order and the customer has received it.
 
-#### Some (but not all) features
+#### Some (but not all) review features
 
 - Connect with your ReviewPack account in seconds
 
@@ -29,10 +29,9 @@ This plugin helps you to collect real reviews from your customers. ReviewPack on
 
 - Add you company logo in ReviewPack to look reliable
 
-- Seamless integration with the following plugins:
-	- WooCommerce
+- Seamless integration with WooCommerce
 
-- Well documented. Our [knowledge base](https://reviewpack.eu/support?utm_source=wordpress&utm_medium=readme&utm_campaign=wp_plugin) is updated regularly
+- Well documented. Our [knowledge base](https://reviewpack.eu/support?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin) is updated regularly
 
 - Developer friendly. For inspiration, check out our [development repository](https://github.com/sitepack-io/reviewpack-wordpress).
 
@@ -46,7 +45,7 @@ This plugin helps you to collect real reviews from your customers. ReviewPack on
 <li>Manage your invite emails</li>
 <li>Detailed reports & statistics (Starter and Professional only)</li>
 </ul>
-<p><a href="http://reviewpack.eu/?utm_source=wordpress&utm_medium=readme&utm_campaign=wp_plugin">View more Premium features</a></p>
+<p><a href="http://reviewpack.eu/?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin">View more Premium features</a></p>
 </blockquote>
 
 #### What is ReviewPack?
@@ -55,11 +54,19 @@ ReviewPack is an independent external platform which ensures that you only recei
 
 We stand for honesty. But real honesty. That's why we only allow people to leave a review who have received an order from your store.
 
-If you are not yet using ReviewPack, [creating an account is 100% free and only takes you about 30 seconds](https://reviewpack.eu/join).
+If you are not yet using ReviewPack, [creating an account is 100% free](https://reviewpack.eu/join?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin) and only takes you about 30 seconds.
 
 #### Improve your review SEO
 
 With this plugin, you can not only gather reviews from your customers, but we will also add the required markup for the search engines. This will boost your reviews SEO, with our automated JSON+LD markup.
+
+The markup is used by poplar search engines. They will interpret the code and might show them in the search results.
+
+#### Automate invites with WooCommerce reviews
+
+This plugin has a free integration with your WooCommerce store. This means that an invitation will only be sent to your customer after the order has been completed. This invitation will not be sent until you change the order status to Completed. The invitation for the review will then be scheduled in 4 days.
+
+With this WooCommerce reviews implementation you can really increase the number of conversions which can lead to more sales.
 
 == Installation ==
 
@@ -70,14 +77,14 @@ With this plugin, you can not only gather reviews from your customers, but we wi
 1. Set [your API token and secret](https://reviewpack.eu/portal) in the plugin settings. For WordPress, you'll need to have a WordPress sales channel.
 
 #### Need help?
-Please take a look at the [ReviewPack documentation](https://reviewpack.eu/support?utm_source=wordpress&utm_medium=readme&utm_campaign=wp_plugin) first.
+Please take a look at the [ReviewPack documentation](https://reviewpack.eu/support?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin) first.
 
 If you can't find an answer there, please look through the [plugin support forums](https://wordpress.org/support/plugin/reviewpack-reviews-seo) or start your own topic.
 
 == Frequently Asked Questions ==
 
-#### More documentation
-More detailed documentation can be found in the [ReviewPack documentation](https://reviewpack.eu/support?utm_source=wordpress&utm_medium=readme&utm_campaign=wp_plugin). We also have detailed [API documentation](https://reviewpack.eu/api/docs?utm_source=wordpress&utm_medium=readme&utm_campaign=wp_plugin) available.
+#### Can I find more documentation?
+More detailed documentation can be found in the [ReviewPack documentation](https://reviewpack.eu/support?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin). We also have detailed [API documentation](https://reviewpack.eu/api/docs?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin) available.
 
 #### How to display a ReviewPack widget on a post or page?
 You can manage widgets in under the ReviewPack menu item in the WordPress admin area. From there, you can create a widget and use a shortcode to add a widget on every location you like.
@@ -86,10 +93,9 @@ You can manage widgets in under the ReviewPack menu item in the WordPress admin 
 Go to **Appearance > Widgets** and use the **ReviewPack** widget that is integrated in this plugin. It will display your current review score with a link to a public page at ReviewPack.
 
 #### Where can I find my API token and secret to connect with ReviewPack?
-You first need a free ReviewPack account. From there, you can add a WordPress sales channel and [copy the secret and token](https://reviewpack.eu/portal?utm_source=wordpress&utm_medium=readme&utm_campaign=wp_plugin).
+You first need a free ReviewPack account. From there, you can add a WordPress sales channel and [copy the secret and token](https://reviewpack.eu/portal?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin).
 
 #### I'm getting an "HTTP Error" when trying to connect to ReviewPack
-
 If you're getting an `HTTP Error` after entering your API token and secret, please contact your hosting company and ask them if they have PHP CURL installed and updated to the latest version.
 
 #### Which personal data is shared with ReviewPack?
@@ -104,7 +110,7 @@ ReviewPack does not share this information with other parties and we handle thes
 
 #### My question is not listed
 
-Please head over to [our knowledge base](https://reviewpack.eu/support?utm_source=wordpress&utm_medium=readme&utm_campaign=wp_plugin) for more detailed documentation.
+Please head over to [our knowledge base](https://reviewpack.eu/support?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin) for more detailed documentation.
 
 == Screenshots ==
 
@@ -113,7 +119,13 @@ Please head over to [our knowledge base](https://reviewpack.eu/support?utm_sourc
 
 == Changelog ==
 
+= 1.0.1 - 24 Feb 2021 =
+* Minor security fixes
 
-#### 1.0.0 - 22 Feb 2021
+= 1.0.0 - 22 Feb 2021 =
+* Initial release of this review plugin
 
-- Initial release of this review plugin
+== Upgrade Notice ==
+
+= 1.0 =
+First version of the ReviewPack reviews plugin for your WooCommerce store

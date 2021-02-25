@@ -21,6 +21,9 @@
             </li>
             <li><a href="<?php echo admin_url('admin.php?page=reviewpack-invites') ?>"
                    class="active"><?php echo __('Invite mail', 'reviewpack') ?></a></li>
+            <li>
+                <a href="<?php echo admin_url('admin.php?page=reviewpack-widgets') ?>"><?php echo __('Widgets', 'reviewpack') ?></a>
+            </li>
         </ul>
 
         <?php if ($isConnected === false): ?>

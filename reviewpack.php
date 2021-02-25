@@ -12,7 +12,7 @@ define('REVIEWPACK_PLUGIN_DIR', plugin_dir_path(__FILE__));
  * Plugin Name: ReviewPack Reviews
  * Plugin URI: https://reviewpack.eu
  * Description: Collect feedback about your company and site with this plugin for ReviewPack. Improve your business quality and sales.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Team ReviewPack
  * Author URI: https://reviewpack.eu/about-us
  * Text Domain: reviewpack
@@ -29,6 +29,14 @@ if (is_admin()) {
 
     reviewpack_admin_init($settings, $api);
 }
+else{
+    $api = new \ReviewPack\Resources\Api();
+    $settings = new \ReviewPack\Admin\Settings($api);
+
+    reviewpack_frontend_init($settings, $api);
+}
+
+$shortcodes = new \ReviewPack\Frontend\Shortcodes($api, $settings);
 
 ##########################################
 # Get review scores with these functions #
@@ -112,6 +120,18 @@ function reviewpack_admin_init($settings, $api)
 {
     $admin = new \ReviewPack\Admin\Admin($settings, $api);
     $admin->registerHooks();
+}
+
+/**
+ * Do no call this directly, this is a hook for frontend_init
+ *
+ * @param $settings
+ * @param $api
+ */
+function reviewpack_frontend_init($settings, $api)
+{
+    $frontend = new \ReviewPack\Frontend\Frontend($settings, $api);
+    $frontend->registerHooks();
 }
 
 /**

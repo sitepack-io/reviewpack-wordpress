@@ -16,6 +16,9 @@
             <li><a href="<?php echo admin_url( 'admin.php?page=reviewpack') ?>"><?php echo __('Dashboard', 'reviewpack') ?></a></li>
             <li><a href="<?php echo admin_url( 'options-general.php?page=reviewpack-settings') ?>" class="active"><?php echo __('Settings', 'reviewpack') ?></a></li>
             <li><a href="<?php echo admin_url( 'admin.php?page=reviewpack-invites') ?>"><?php echo __('Invite mail', 'reviewpack') ?></a></li>
+            <li>
+                <a href="<?php echo admin_url('admin.php?page=reviewpack-widgets') ?>"><?php echo __('Widgets', 'reviewpack') ?></a>
+            </li>
         </ul>
 
         <?php if($isConnected === false): ?>

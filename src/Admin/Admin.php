@@ -42,8 +42,18 @@ class Admin
         add_action('admin_init', [$this, 'adminInit']);
         add_action('admin_enqueue_scripts', [$this, 'addAdminStyles']);
         add_action('admin_menu', [$this, 'reviewPackAdminPages']);
+        add_action('admin_head', [$this, 'registerShortcodeWidget']);
 
         $this->registerInviteHooks();
+    }
+
+    /**
+     * Render the library for widgets
+     */
+    public function registerShortcodeWidget()
+    {
+//        echo '<script type="text/javascript" src="https://reviewpack.eu/js/widget.min.js" async></script>' . PHP_EOL;
+        echo '<script type="text/javascript" src="http://reviewpack.local:8000/js/widget.min.js" async></script>' . PHP_EOL;
     }
 
     /**
@@ -69,6 +79,7 @@ class Admin
      */
     public function adminInit()
     {
+
         if (empty($this->settings->getOption(Settings::SETTING_API_TOKEN)) || empty($this->settings->getOption(Settings::SETTING_API_SECRET))) {
             if (\stripos($_SERVER['REQUEST_URI'], 'reviewpack-settings') === false) {
                 add_action('admin_notices', [$this, 'noticeActivateAccount']);
@@ -91,9 +102,9 @@ class Admin
     {
         remove_menu_page('options-general.php?page=reviewpack-settings');
 
-        add_menu_page(__('ReviewPack dashboard', 'reviewpack'), 'ReviewPack', 'manage_options', 'reviewpack', [$this, 'renderDashboardPage'], 'dashicons-star-filled', 60.43985748);
+        add_menu_page(__('ReviewPack dashboard', 'reviewpack'), 'ReviewPack', 'manage_options', 'reviewpack', [$this, 'renderDashboardPage'], 'dashicons-star-filled', 61.43985748);
 //        add_submenu_page('reviewpack', 'Settings', _('Dashboard'), 'manage_options', 'admin.php?page=reviewpack-dashboard');
-//        add_submenu_page('reviewpack', 'Widgets', __('Widgets', 'reviewpack'), 'manage_options', 'reviewpack-widgets', [$this, 'renderAdminPage']);
+        add_submenu_page('reviewpack', 'Widgets', __('Widgets', 'reviewpack'), 'manage_options', 'reviewpack-widgets', [$this, 'renderWidgetsPage']);
         add_submenu_page('reviewpack', 'Settings', __('Invite mail', 'reviewpack'), 'manage_options', 'reviewpack-invites', [$this, 'renderInvitesPage']);
     }
 
@@ -135,6 +146,16 @@ class Admin
         $isConnected = $this->isConnected();
 
         include(REVIEWPACK_PLUGIN_DIR . '/views/admin_settings.php');
+    }
+
+    /**
+     * Build the widgets page
+     */
+    public function renderWidgetsPage()
+    {
+        $isConnected = $this->isConnected();
+
+        include(REVIEWPACK_PLUGIN_DIR . '/views/admin_widgets.php');
     }
 
     /**
