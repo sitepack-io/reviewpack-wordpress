@@ -47,8 +47,8 @@ class Frontend
     public function addFrontendHeadCode()
     {
         echo "<!-- ReviewPack reviews widget, more information on: https://reviewpack.eu -->" . PHP_EOL;
-//        echo '<script type="text/javascript" src="https://reviewpack.eu/js/widget.min.js" async></script>' . PHP_EOL;
-        echo '<script type="text/javascript" src="http://reviewpack.local:8000/js/widget.min.js" async></script>' . PHP_EOL;
+        echo '<script type="text/javascript" src="https://reviewpack.eu/js/widget.min.js" async></script>' . PHP_EOL;
+//        echo '<script type="text/javascript" src="http://reviewpack.local:8000/js/widget.min.js" async></script>' . PHP_EOL;
         echo "<!-- / ReviewPack -->" . PHP_EOL;
     }
 
