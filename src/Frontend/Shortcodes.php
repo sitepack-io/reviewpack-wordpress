@@ -54,6 +54,10 @@ class Shortcodes
                 return $this->renderSlimScore();
             case 'score':
                 return $this->renderScore();
+            case 'score_title':
+                return $this->renderScoreTitle();
+            case 'carrousel':
+                return $this->renderCarrousel();
         }
 
         $this->renderError(__('Please define a valid widget type', 'reviewpack'));
@@ -74,7 +78,7 @@ class Shortcodes
     {
         $score = $this->getCompanyScore();
 
-        $html = '<div class="reviewpack-box" data-company-uuid="' . esc_attr($this->settings->getOption(Settings::SETTING_COMPANY_UUID)) . '" data-company-slug="' . $score->slug . '" data-widget-type="slim_score" data-theme="light">';
+        $html = '<div class="reviewpack-box" data-company-uuid="' . esc_attr($this->settings->getOption(Settings::SETTING_COMPANY_UUID)) . '" data-company-slug="' . $score->slug . '" data-widget-type="slim_score" data-theme="light" data-locale="' . esc_attr(get_locale()) . '">';
         $html .= '<a href="' . esc_url($score->public_url) . '" target="_blank" rel="noopener">ReviewPack</a>';
         $html .= '</div>';
 
@@ -88,7 +92,35 @@ class Shortcodes
     {
         $score = $this->getCompanyScore();
 
-        $html = '<div class="reviewpack-box" data-company-uuid="' . esc_attr($this->settings->getOption(Settings::SETTING_COMPANY_UUID)) . '" data-company-slug="' . $score->slug . '" data-widget-type="score" data-theme="light">';
+        $html = '<div class="reviewpack-box" data-company-uuid="' . esc_attr($this->settings->getOption(Settings::SETTING_COMPANY_UUID)) . '" data-company-slug="' . $score->slug . '" data-widget-type="score" data-theme="light" data-locale="' . esc_attr(get_locale()) . '">';
+        $html .= '<a href="' . esc_url($score->public_url) . '" target="_blank" rel="noopener">ReviewPack</a>';
+        $html .= '</div>';
+
+        return $html;
+    }
+
+    /**
+     * Render the score with a title
+     */
+    private function renderScoreTitle()
+    {
+        $score = $this->getCompanyScore();
+
+        $html = '<div class="reviewpack-box" data-company-uuid="' . esc_attr($this->settings->getOption(Settings::SETTING_COMPANY_UUID)) . '" data-company-slug="' . $score->slug . '" data-widget-type="score_title" data-theme="light" data-locale="' . esc_attr(get_locale()) . '">';
+        $html .= '<a href="' . esc_url($score->public_url) . '" target="_blank" rel="noopener">ReviewPack</a>';
+        $html .= '</div>';
+
+        return $html;
+    }
+
+    /**
+     * Render the score carrousel
+     */
+    private function renderCarrousel()
+    {
+        $score = $this->getCompanyScore();
+
+        $html = '<div class="reviewpack-box" data-company-uuid="' . esc_attr($this->settings->getOption(Settings::SETTING_COMPANY_UUID)) . '" data-company-slug="' . $score->slug . '" data-widget-type="carrousel" data-theme="light" data-locale="' . esc_attr(get_locale()) . '">';
         $html .= '<a href="' . esc_url($score->public_url) . '" target="_blank" rel="noopener">ReviewPack</a>';
         $html .= '</div>';
 

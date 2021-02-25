@@ -43,12 +43,21 @@ class Admin
         add_action('admin_enqueue_scripts', [$this, 'addAdminStyles']);
         add_action('admin_menu', [$this, 'reviewPackAdminPages']);
         add_action('admin_head', [$this, 'registerShortcodeWidget']);
+        add_action('wp_dashboard_setup', [$this, 'registerDashboardWidgets']);
 
         $this->registerInviteHooks();
     }
 
     /**
-     * Render the library for widgets
+     * Add a widget for the ReviewPack status
+     */
+    public function registerDashboardWidgets()
+    {
+        wp_add_dashboard_widget('reviewpack_reviews', __('ReviewPack reviews', 'reviewpack'), [$this, 'renderDashboardWidget']);
+    }
+
+    /**
+     * Render the library for widgets (in admin)
      */
     public function registerShortcodeWidget()
     {
@@ -102,7 +111,7 @@ class Admin
     {
         remove_menu_page('options-general.php?page=reviewpack-settings');
 
-        add_menu_page(__('ReviewPack dashboard', 'reviewpack'), 'ReviewPack', 'manage_options', 'reviewpack', [$this, 'renderDashboardPage'], 'dashicons-star-filled', 61.43985748);
+        add_menu_page(__('ReviewPack dashboard', 'reviewpack'), 'ReviewPack', 'manage_options', 'reviewpack', [$this, 'renderDashboardPage'], 'dashicons-star-filled', 2);
 //        add_submenu_page('reviewpack', 'Settings', _('Dashboard'), 'manage_options', 'admin.php?page=reviewpack-dashboard');
         add_submenu_page('reviewpack', 'Widgets', __('Widgets', 'reviewpack'), 'manage_options', 'reviewpack-widgets', [$this, 'renderWidgetsPage']);
         add_submenu_page('reviewpack', 'Settings', __('Invite mail', 'reviewpack'), 'manage_options', 'reviewpack-invites', [$this, 'renderInvitesPage']);
@@ -209,6 +218,38 @@ class Admin
         }
 
         include(REVIEWPACK_PLUGIN_DIR . '/views/admin_invites.php');
+    }
+
+    /**
+     * Render the actual dashboard widget
+     */
+    public function renderDashboardWidget()
+    {
+        $isConnected = $this->isConnected();
+
+        if ($isConnected === true) {
+            try {
+                $company = $this->api->getCompanyScore(
+                    $this->settings->getOption(Settings::SETTING_API_TOKEN),
+                    $this->settings->getOption(Settings::SETTING_API_SECRET),
+                    $this->settings->getOption(Settings::SETTING_COMPANY_UUID)
+                );
+
+                $rating = $company->avg_score;
+                include(REVIEWPACK_PLUGIN_DIR . '/views/elements/rating.php');
+                echo '<br/><br />';
+
+
+                echo '<strong>' . __('Total reviews', 'reviewpack') .':</strong><br />' . esc_attr($company->total_reviews) . '<br /><br />';
+
+                echo ' <a href="' . esc_url($company->public_url) . '" class="button" target="_blank" rel="noopener">' . __('Open public page', 'reviewpack') . '</a>';
+            } catch (\Exception $exception) {
+                echo __('Whoops: could not fetch data:', 'reviewpack') . '<br />' . esc_html($exception->getMessage());
+            }
+        } else {
+            echo __('The plugin is not connected with ReviewPack.', 'reviewpack') . '<br /><br />';
+            echo ' <a href="' . admin_url('options-general.php?page=reviewpack-settings') . '" class="button">' . __('Configure now', 'reviewpack') . '</a>';
+        }
     }
 
     /**

@@ -74,33 +74,10 @@
                         <?php else: ?>
                             <p>
                         <span class="reviewpack-stars">
-                        <?php if ($companyScore->avg_score == 50): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_50_5.png" alt="Stars 5"/>
-                        <?php elseif ($companyScore->avg_score == 40): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_40_5.png" alt="Stars 4"/>
-                        <?php elseif ($companyScore->avg_score == 30): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_30_5.png" alt="Stars 3"/>
-                        <?php elseif ($companyScore->avg_score == 20): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_20_5.png" alt="Stars 2"/>
-                        <?php elseif ($companyScore->avg_score == 10): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_10_5.png" alt="Stars 1"/>
-                        <?php elseif ($companyScore->avg_score <= 50 && $companyScore->avg_score >= 45): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_45_5.png" alt="Stars 5"/>
-                        <?php elseif ($companyScore->avg_score <= 44 && $companyScore->avg_score >= 40): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_40_5.png" alt="Stars 5"/>
-                        <?php elseif ($companyScore->avg_score <= 40 && $companyScore->avg_score >= 34): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_35_5.png" alt="Stars 5"/>
-                        <?php elseif ($companyScore->avg_score <= 34 && $companyScore->avg_score >= 30): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_30_5.png" alt="Stars 5"/>
-                        <?php elseif ($companyScore->avg_score <= 30 && $companyScore->avg_score >= 24): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_25_5.png" alt="Stars 5"/>
-                        <?php elseif ($companyScore->avg_score <= 24 && $companyScore->avg_score >= 20): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_20_5.png" alt="Stars 5"/>
-                        <?php elseif ($companyScore->avg_score <= 20 && $companyScore->avg_score >= 15): ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_15_5.png" alt="Stars 5"/>
-                        <?php else: ?>
-                            <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_10_5.png" alt="Stars 5"/>
-                        <?php endif; ?>
+                        <?php
+                        $rating = $companyScore->avg_score;
+                        include(REVIEWPACK_PLUGIN_DIR . '/views/elements/rating.php');
+                        ?>
                         </span>
                             </p>
                             <p>
@@ -158,33 +135,10 @@
                                 <tr>
                                     <td>
                                             <span class="reviewpack-stars">
-                                            <?php if ($review->stars_total == 50): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_50_5.png" alt="Stars 5"/>
-                                            <?php elseif ($review->stars_total == 40): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_40_5.png" alt="Stars 4"/>
-                                            <?php elseif ($review->stars_total == 30): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_30_5.png" alt="Stars 3"/>
-                                            <?php elseif ($review->stars_total == 20): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_20_5.png" alt="Stars 2"/>
-                                            <?php elseif ($review->stars_total == 10): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_10_5.png" alt="Stars 1"/>
-                                            <?php elseif ($review->stars_total <= 50 && $review->stars_total >= 45): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_45_5.png" alt="Stars 5"/>
-                                            <?php elseif ($review->stars_total <= 44 && $review->stars_total >= 40): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_40_5.png" alt="Stars 5"/>
-                                            <?php elseif ($review->stars_total <= 40 && $review->stars_total >= 34): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_35_5.png" alt="Stars 5"/>
-                                            <?php elseif ($review->stars_total <= 34 && $review->stars_total >= 30): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_30_5.png" alt="Stars 5"/>
-                                            <?php elseif ($review->stars_total <= 30 && $review->stars_total >= 24): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_25_5.png" alt="Stars 5"/>
-                                            <?php elseif ($review->stars_total <= 24 && $review->stars_total >= 20): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_20_5.png" alt="Stars 5"/>
-                                            <?php elseif ($review->stars_total <= 20 && $review->stars_total >= 15): ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_15_5.png" alt="Stars 5"/>
-                                            <?php else: ?>
-                                                <img src="<?php echo plugin_dir_url(REVIEWPACK_PLUGIN_BASENAME) ?>/images/rating_10_5.png" alt="Stars 5"/>
-                                            <?php endif; ?>
+                                                <?php
+                                                $rating = $review->stars_total;
+                                                include(REVIEWPACK_PLUGIN_DIR . '/views/elements/rating.php');
+                                                ?>
                                             </span>
                                     </td>
                                     <td><?php if(empty($review->title)){

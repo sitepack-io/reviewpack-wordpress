@@ -81,21 +81,40 @@
                     </div>
                     <div class="reviewpack-block">
                         <h3>
-                            <?php echo __('Score widget', 'reviewpack') ?>
+                            <?php echo __('Score widget with title', 'reviewpack') ?>
                         </h3>
 
                         <div class="reviewpack-widget-preview">
                             <?php
-                            echo do_shortcode('[reviewpack type="score"]');
+                            echo do_shortcode('[reviewpack type="score_title"]');
                             ?>
                         </div>
                         <hr>
                         <p class="reviewpack-shortcode-line">
                             <strong><?php echo __('Use this shortcode:', 'reviewpack'); ?></strong><br />
-                            <code>[reviewpack type="score"]</code>
+                            <code>[reviewpack type="score_title"]</code>
                         </p>
                     </div>
                 </div>
+
+            <div class="reviewpack-dashboard">
+                <div class="reviewpack-block reviewpack-block-full">
+                    <h3>
+                        <?php echo __('Big review Carrousel', 'reviewpack') ?>
+                    </h3>
+
+                    <div class="reviewpack-widget-preview">
+                        <?php
+                        echo do_shortcode('[reviewpack type="carrousel"]');
+                        ?>
+                    </div>
+                    <hr>
+                    <p class="reviewpack-shortcode-line">
+                        <strong><?php echo __('Use this shortcode:', 'reviewpack'); ?></strong><br />
+                        <code>[reviewpack type="carrousel"]</code>
+                    </p>
+                </div>
+            </div>
             <?php endif; ?>
         </div>
     </div>
