@@ -1,7 +1,7 @@
-=== ReviewPack: Reviews SEO ===
+=== Collect Company Reviews - ReviewPack ===
 Contributors: ReviewPack
 Donate link: https://reviewpack.eu?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin
-Tags: review, reviews, seo, email, marketing, woocommerce, conversion, stars, rating, tool
+Tags: reviews, seo, marketing, woocommerce, conversion, seo, rating, tool
 Requires at least: 5.4
 Tested up to: 5.6
 Stable tag: 1.0.2
@@ -9,11 +9,11 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.2
 
-Collect customer feedback with your WooCommerce store. The #1 review tool!
+Collect customer feedback and reviews about your company with a WooCommerce store. The #1 review tool!
 
 == Description ==
 
-## ReviewPack: Reviews SEO
+## ReviewPack: Collect Company Reviews
 
 *Collect reliable and 100% genuine reviews from your customers with this plugin*
 
@@ -21,15 +21,17 @@ This plugin helps you to collect real reviews from your customers. ReviewPack on
 
 ### Some (but not all) review features
 
-- Connect with your ReviewPack account in seconds
-
 - Change the invite mail with your needs and make it personal
+
+- Display professional review widgets in your theme
 
 - Boost your conversion rate with positive reviews about your company
 
-- Add you company logo in ReviewPack to look reliable
+- Add you company logo on your public ReviewPack page to look reliable
 
-- Seamless integration with WooCommerce
+- Connect with your free ReviewPack account in seconds
+
+- Seamless integration with WooCommerce for automated invites
 
 - Well documented. Our [knowledge base](https://reviewpack.eu/support?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin) is updated regularly
 
@@ -58,13 +60,13 @@ If you are not yet using ReviewPack, [creating an account is 100% free](https://
 
 ## Automated invites with WooCommerce reviews
 
-This plugin has a free integration with your WooCommerce store. This means that an invitation will only be sent to your customer after the order has been completed. This invitation will not be sent until you change the order status to Completed. The invitation for the review will then be scheduled in 4 days.
+This plugin has a free integration with your WooCommerce store. This means that an invitation will only be sent to your customer after the order has been completed. This review invitation will not be sent until you change the order status to Completed. The invitation for the review will then be scheduled in 4 days.
 
-With this WooCommerce reviews implementation you can really increase the number of conversions which can lead to more sales.
+With this WooCommerce reviews implementation you can really increase the number of conversions which can lead to more sales. You can also add widgets on your site, which helps to increase sales.
 
 ## Display review widgets
 
-Another benefit of this plugin is the ease to implement the review widgets. These widgets can be imlpemented by using a simple shortcode. All shortcodes are displayed in the WP Admin (ReviewPack -> Widgets).
+Another benefit of this plugin is the ease to implement the review widgets. These widgets can be implemented by using a simple shortcode. All shortcodes are displayed in the WP Admin (ReviewPack -> Widgets).
 
 A widget displays the amount of reviews and your current company score. This will help to convert leads into customers and raise your conversion rates.
 
@@ -72,8 +74,7 @@ A widget displays the amount of reviews and your current company score. This wil
 
 With this plugin, you can not only gather reviews from your customers, but we will also add the required markup for the search engines. This will boost your reviews SEO, with our automated JSON+LD markup.
 
-The markup is used by poplar search engines. They will interpret the code and might show them in the search results.
-
+The review markup is used by poplar search engines. They will interpret the code and might show them in the search results.
 
 == Installation ==
 
@@ -95,11 +96,20 @@ When you're a developer, please also check our [GitHub repository](https://githu
 #### Where can I find more documentation?
 More detailed documentation can be found in the [ReviewPack documentation](https://reviewpack.eu/support?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin). We also have detailed [API documentation](https://reviewpack.eu/api/docs?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin) available.
 
-#### Can I start for free?
+#### Can I start for free with gathering reviews about my company?
 Yes, you can start for free. We offer a free account option, so you can sent up to 25 invites a month. If you'd like to sent out more invites, we have paid plans available.
 
-#### How to display a ReviewPack widget on a post or page?
+#### How to display a ReviewPack reviews widget on a post or page?
 You can manage widgets in under the ReviewPack menu item in the WordPress admin area. Look for a widget you like and copy the widget shortcode from there. With the shortcode you can add a widget on every location you like.
+
+#### How can I collect reviews with WooCommerce?
+In the ReviewPack settings, you can activate the WooCommerce integration. This will activate a order status change "hook". We listen for the order status completed, and will plan an invite.
+
+#### How can I display reviews with WooCommerce?
+In this plugin, we've integrated widgets. These widgets can by used with a simple shortcode, so you don't need to have any technical knowledge.
+
+#### Can I use default review widgets on my site?
+Yes, we have default widgets integrated in this plugin. You can find them in your WordPress admin -> ReviewPack -> Widgets.
 
 #### How to display a review widget in areas like the sidebar or footer?
 Go to **Appearance > Widgets** and use the **Text** widget. Implement a shortcode to render a widget, you can find the shortcodes in the admin (ReviewPack -> Widgets). It will display your current review score with a link to a public page at ReviewPack.
@@ -119,6 +129,9 @@ In order to invite the customer to write a review about your company, the follow
 - Currency
 
 ReviewPack does not share this information with other parties and we handle these names with care. No address or payment details are ever shared.
+
+#### Do I need to have technical knowledge for implementing reviews?
+No, you don't. With this free plugin you can start directly. If you have any questions, please ask our support team to help you.
 
 #### My question is not listed
 
