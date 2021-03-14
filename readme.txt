@@ -3,17 +3,17 @@ Contributors: ReviewPack
 Donate link: https://reviewpack.eu?utm_source=wordpress&utm_medium=wordpress&utm_campaign=wp_plugin
 Tags: reviews, seo, marketing, woocommerce, conversion, seo, rating, tool
 Requires at least: 5.4
-Tested up to: 5.6
-Stable tag: 1.0.2
+Tested up to: 5.7
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.2
 
-Collect customer feedback and reviews about your company with a WooCommerce store. The #1 review tool!
+Collect and display customer reviews about your company and eCommerce store. The #1 review tool!
 
 == Description ==
 
-## ReviewPack: Collect Company Reviews
+## ReviewPack: Collect and Display Company Reviews
 
 *Collect reliable and 100% genuine reviews from your customers with this plugin*
 
@@ -145,6 +145,9 @@ Please head over to [our knowledge base](https://reviewpack.eu/support?utm_sourc
 4. Manage the invite mail
 
 == Changelog ==
+
+= 1.0.3 - 14 Mar 2021 =
+* ReviewPack API endpoint improvements
 
 = 1.0.2 - 25 Feb 2021 =
 * Initial release of the plugin

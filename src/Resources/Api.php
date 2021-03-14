@@ -18,7 +18,7 @@ use ReviewPack\Models\Review;
 class Api
 {
 
-    const REVIEWPACK_API_URL = 'https://reviewpack.eu/api';
+    const REVIEWPACK_API_URL = 'https://api.reviewpack.eu/';
 //    const REVIEWPACK_API_URL = 'http://127.0.0.1:8000/api';
 
     /**

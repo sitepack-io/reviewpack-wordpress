@@ -218,6 +218,10 @@ p.reviewpack-lead {
         width: 47%;
         margin-right: 1%;
     }
+
+    .reviewpack-dashboard .reviewpack-block-full {
+        width: 98%;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
